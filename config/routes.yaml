@@ -1,8 +1,9 @@
 home:
-    path: /
-    controller: App\Controller\HomeController::index
-    methods: GET
+   path: /
+   controller: App\Controller\HomeController::index
+   methods: GET
 
 login_show:
-    path: /login
-    controller: App\Controller\LoginController::show
+   path: /login
+   controller: App\Controller\LoginController::show
+   methods: GET
