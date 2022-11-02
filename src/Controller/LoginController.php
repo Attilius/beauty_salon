@@ -8,11 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
-    #[Route('/login', name: 'login_show')]
+    /**
+     * @Route("/", name="login_show")
+     * @return Response
+     */
     public function show(): Response
     {
-        return $this->render('login/login.html.twig', [
-            'controller_name' => 'LoginController',
-        ]);
+        return $this->render('login/login.html.twig', []);
     }
 }
