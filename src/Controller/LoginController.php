@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/", name="login_show")
+     * @Route("/l", name="login_show")
      * @return Response
      */
     public function show(): Response
