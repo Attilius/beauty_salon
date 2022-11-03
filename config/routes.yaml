@@ -3,7 +3,7 @@ home:
    controller: App\Controller\HomeController::index
    methods: GET
 
-login_show:
+login:
    path: /login
-   controller: App\Controller\LoginController::show
-   methods: GET
+   controller: App\Controller\AuthController::login
+   methods: GET|POST
