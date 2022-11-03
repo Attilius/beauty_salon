@@ -34,7 +34,23 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Products</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Booking</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
-        <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+        {% if app.user %}
+            <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle"
+               href="/" id="navbarDarkDropdownMenuLink"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false"
+            >
+                {{ app.user.email }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Cart</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+        {% else %}
+            <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+        {% endif %}
     </nav>
 </header>
 
