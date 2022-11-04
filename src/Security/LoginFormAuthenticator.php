@@ -6,7 +6,6 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -15,7 +14,6 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
-use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
@@ -24,14 +22,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_home';
-    private UrlGeneratorInterface $urlGenerator;
+    public const SUCCESS_LOGIN_ROUTE = 'app_home';
+    public const FAILURE_LOGIN_ROUTE = 'app_login';
+
     private UserRepository $userRepository;
     private RouterInterface $router;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, UserRepository $userRepository, RouterInterface $router)
+    public function __construct(UserRepository $userRepository, RouterInterface $router)
     {
-        $this->urlGenerator = $urlGenerator;
         $this->userRepository = $userRepository;
         $this->router = $router;
     }
@@ -59,16 +57,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
                 return $user;
             }),
 
-            /*new CustomCredentials(function ($credentials, User $user) {
-                return $credentials === 'admin';
-            }, $password)*/
+            new PasswordCredentials($password),
 
-            new PasswordCredentials($password)
-
-            /*new PasswordCredentials($request->request->get('password', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
-            ]*/
+            ]
         );
     }
 
@@ -78,19 +71,18 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        return new RedirectResponse($this->router->generate('app_home'));
+        return new RedirectResponse($this->router->generate(self::SUCCESS_LOGIN_ROUTE));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
 
-        return new RedirectResponse($this->router->generate('app_login'));
+        return new RedirectResponse($this->router->generate(self::FAILURE_LOGIN_ROUTE));
     }
 
     protected function getLoginUrl(Request $request): string
     {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        return $this->router->generate(self::SUCCESS_LOGIN_ROUTE);
     }
 }
