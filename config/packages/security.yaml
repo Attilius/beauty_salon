@@ -1,5 +1,7 @@
 security:
     enable_authenticator_manager: true
+
+    hide_user_not_found: false
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
@@ -18,8 +20,8 @@ security:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\LoginFormAuthenticator
-            logout:
-                path: logout
+            logout: true
+                # path: logout
                 # where to redirect after logout
                 # target: app_any_route
 
