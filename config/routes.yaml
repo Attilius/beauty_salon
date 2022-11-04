@@ -1,9 +1,4 @@
-home:
+app_home:
    path: /
    controller: App\Controller\HomeController::index
    methods: GET
-
-login:
-   path: /login
-   controller: App\Controller\AuthController::login
-   methods: GET|POST
