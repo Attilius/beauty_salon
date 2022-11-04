@@ -24,7 +24,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'home';
+    public const LOGIN_ROUTE = 'app_home';
     private UrlGeneratorInterface $urlGenerator;
     private UserRepository $userRepository;
     private RouterInterface $router;
@@ -59,9 +59,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
                 return $user;
             }),
 
-            new CustomCredentials(function ($credentials, User $user) {
+            /*new CustomCredentials(function ($credentials, User $user) {
+                return $credentials === 'admin';
+            }, $password)*/
 
-            }, $password)
+            new PasswordCredentials($password)
 
             /*new PasswordCredentials($request->request->get('password', '')),
             [
@@ -77,12 +79,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->router->generate('home'));
+        return new RedirectResponse($this->router->generate('app_home'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
-        return 1;
+        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
+
+        return new RedirectResponse($this->router->generate('app_login'));
     }
 
     protected function getLoginUrl(Request $request): string
