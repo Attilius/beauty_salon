@@ -39,7 +39,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $request->getPathInfo() === '/login' && $request->isMethod('POST');
     }
-
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email');
@@ -70,7 +69,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        //dd($request->getSession());
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+            //dd("in if statement");
             return new RedirectResponse($targetPath);
         }
 
