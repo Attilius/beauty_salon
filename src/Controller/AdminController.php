@@ -6,14 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
-     * @Route("/l", name="login_show")
+     * @Route("/admin", name="app_admin")
      * @return Response
      */
     public function show(): Response
     {
-        return $this->render('login/login.html.twig', []);
+        return $this->render('admin/admin.html.twig', []);
     }
 }
