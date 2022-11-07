@@ -19,11 +19,13 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            entry_point: App\Security\LoginFormAuthenticator
+            #entry_point: App\Security\LoginFormAuthenticator
             custom_authenticator:
-                - App\Security\LoginFormAuthenticator
+            #    - App\Security\LoginFormAuthenticator
                 - App\Security\DummyAuthenticator
-
+            form_login:
+                login_path: app.login
+                check_path: app.login
             logout: true
                 # path: logout
                 # where to redirect after logout
