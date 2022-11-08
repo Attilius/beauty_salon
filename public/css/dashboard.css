@@ -11,6 +11,9 @@ body {
 /*
  * Sidebar
  */
+#bg-pink {
+    background-color: #d63384;
+}
 
 .sidebar {
     position: fixed;
