@@ -51,6 +51,9 @@
         {% else %}
             <a class="py-2 d-none d-md-inline-block" href="/login">Login | Register</a>
         {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="py-2 d-none d-md-inline-block" href="/admin">Dashboard</a>
+        {% endif %}
     </nav>
 </header>
 
