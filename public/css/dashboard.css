@@ -29,13 +29,38 @@ body {
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
+.nav-item {
+    width: 100%;
+}
+
 .nav_link {
+    width: 95%;
+    float: right;
+    margin-right: 0;
     font-weight: 500;
     color: whitesmoke;
     display: block;
     padding: 0.5rem 1rem;
     text-decoration: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    text-align: start;
+}
+
+.nav_link:hover {
+    color: whitesmoke;
+    padding-left: 25px;
+}
+
+.active {
+    background-color: #FFFFFF;
+    color: #d63384;
+    padding-left: 25px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.active:hover {
+    color: #d63384;
+    padding-left: 25px;
 }
 
 @media (max-width: 767.98px) {
