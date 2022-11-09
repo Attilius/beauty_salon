@@ -35,7 +35,21 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="#">Sign out</a>
+            <a class="nav-link px-3" href="{{ path('app_logout') }}">
+                <div class="d-flex justify-content-center h-35">
+                    <div class="mx-3 d-flex flex-column justify-content-center">
+                        <span class="text-whitesmoke">{{app.user.email}}</span>
+                        <p class="text-whitesmoke mb-1">Jennifer Hutchinson</p>
+                    </div>
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (1).webp"
+                            class="rounded-circle"
+                            height="35"
+                            alt="Portrait of a Woman"
+                            loading="lazy"
+                    />
+                </div>
+            </a>
         </div>
     </div>
 </header>
