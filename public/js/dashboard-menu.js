@@ -7,6 +7,7 @@ window.onload = function() {
     const index = localStorage.getItem("menu_index");
     console.log(index)
 }
+
 for (let i = 0; i < sidebarMenuItem.length; i++) {
     const item = sidebarMenuItem[i];
     const setActive = item => {
