@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UpdateProductController extends AbstractController
 {
     /**
-     * @Route("/admin/product/{id}", name="app_update_product")
+     * @Route("/admin/product/edit/{id}", name="app_update_product")
      * @IsGranted("ROLE_ADMIN")
      * @return Response
      */
