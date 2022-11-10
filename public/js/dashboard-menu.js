@@ -19,6 +19,7 @@ for (let i = 0; i < sidebarMenuItem.length; i++) {
         else {
             [...item.target.parentElement.parentElement.parentElement.children]
                 .forEach(sib => sib.children[0].classList.remove('active'));
+            localStorage.setItem('menu_index', i);
             item.path[1].parentElement.children[0].classList.add('active');
         }
     }
