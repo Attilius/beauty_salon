@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreateProductController extends AbstractController
 {
     /**
-     * @Route("/admin/product_create", name="app_create_product")
+     * @Route("/admin/product/create", name="app_create_product")
      * @IsGranted("ROLE_ADMIN")
      * @return Response
      */
