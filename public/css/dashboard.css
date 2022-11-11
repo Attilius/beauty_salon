@@ -14,12 +14,20 @@
     margin-left: 5px;
 }
 
-.menu-item-contents:hover,
-.active {
+.menu-item-contents:hover {
     background-color: whitesmoke;
     --sidebar-menu-color: var(--sidebar-bg);
     --fa-color: var(--sidebar-bg);
     width: 100%;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+}
+
+.active {
+    background-color: whitesmoke;
+    position: relative;
+    left: 15px;
+    border-top-left-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+    padding: 0 !important;
 }
