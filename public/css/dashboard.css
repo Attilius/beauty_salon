@@ -1,8 +1,25 @@
 :root {
+    --body-bg: whitesmoke;
     --sidebar-bg: #d63384;
     --sidebar-menu-color: whitesmoke;
+    --fa-color: whitesmoke;
 }
 
-.fa {
-    color: whitesmoke !important;
+.menu-item-contents {
+    margin-left: 15px;
+}
+
+.menu-icon {
+    color: var(--fa-color) !important;
+    margin-left: 5px;
+}
+
+.menu-item-contents:hover,
+.active {
+    background-color: whitesmoke;
+    --sidebar-menu-color: var(--sidebar-bg);
+    --fa-color: var(--sidebar-bg);
+    width: 100%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
