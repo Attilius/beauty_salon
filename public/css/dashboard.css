@@ -3,15 +3,17 @@
     --sidebar-bg: #d63384;
     --sidebar-menu-color: whitesmoke;
     --fa-color: whitesmoke;
-}
-
-.menu-item-contents {
-    margin-left: 15px;
+    --sidebar-menu-active-item-color: #d63384;
 }
 
 .menu-icon {
     color: var(--fa-color) !important;
     margin-left: 5px;
+}
+
+.menu-item {
+    position: relative;
+    left: 15px;
 }
 
 .menu-item-contents:hover {
@@ -24,9 +26,11 @@
 }
 
 .active {
-    background-color: whitesmoke;
+    background-color: var(--sidebar-menu-color) !important;
+    --fa-color: var(--sidebar-bg);
+    color: var(--sidebar-menu-active-item-color);
     position: relative;
-    left: 15px;
+    left: 20px;
     border-top-left-radius: 50px !important;
     border-bottom-left-radius: 50px !important;
     padding: 0 !important;
