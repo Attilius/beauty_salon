@@ -18,6 +18,7 @@
         <!-- Custom styles for this template -->
         <link rel="stylesheet" type="text/css" href="/css/base.css"/>
         <link rel="stylesheet" type="text/css" href="/css/carousel.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/products.css"/>
     {% endblock %}
 
     {% block javascripts %}
@@ -31,7 +32,7 @@
         <a class="py-2 d-none d-md-inline-block" href="/">Home</a>
         <a class="py-2 d-none d-md-inline-block" href="#">About</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Services</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Products</a>
+        <a class="py-2 d-none d-md-inline-block" href="{{ path("app_products") }}">Products</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Booking</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Blog</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
