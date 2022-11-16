@@ -54,7 +54,7 @@
             <a class="py-2 d-none d-md-inline-block" href="{{ path("app_login") }}">Login | Register</a>
         {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="py-2 d-none d-md-inline-block" href="/admin">Dashboard</a>
+            <a class="py-2 d-none d-md-inline-block" href="{{ path("app_admin") }}">Dashboard</a>
         {% endif %}
     </nav>
 </header>
