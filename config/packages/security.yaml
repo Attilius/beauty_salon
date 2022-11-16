@@ -32,7 +32,7 @@ security:
                 # where to redirect after logout
                 # target: app_any_route
             remember_me:
-                #secret: '%kernel.secret%'
+                secret: '%kernel.secret%'
                 # always_remember_me: true
                 #signature_properties: [password]
 
