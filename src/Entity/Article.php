@@ -41,6 +41,9 @@ class Article
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $coverImage = null;
 
+    #[ORM\Column(length: 16)]
+    private ?string $tag = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Article
     public function setCoverImage(?string $coverImage): self
     {
         $this->coverImage = $coverImage;
+
+        return $this;
+    }
+
+    public function getTag(): ?string
+    {
+        return $this->tag;
+    }
+
+    public function setTag(string $tag): self
+    {
+        $this->tag = $tag;
 
         return $this;
     }
