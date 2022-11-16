@@ -38,7 +38,7 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
         {% if app.user %}
             <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle"
-               href="/" id="navbarDarkDropdownMenuLink"
+               href="{{ path("app_home") }}" id="navbarDarkDropdownMenuLink"
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false"
