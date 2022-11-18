@@ -46,4 +46,14 @@ class UserTest extends TestCase
         $user->setFirstName("John");
         $this->assertSame("John", $user->getFirstName());
     }
+
+    public function test_setting_last_name()
+    {
+        $user = new User();
+
+        $this->assertNull($user->getLastName());
+
+        $user->setLastName("Doe");
+        $this->assertSame("Doe", $user->getLastName());
+    }
 }
