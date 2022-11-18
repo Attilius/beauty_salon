@@ -56,4 +56,14 @@ class UserTest extends TestCase
         $user->setLastName("Doe");
         $this->assertSame("Doe", $user->getLastName());
     }
+
+    public function test_setting_plain_password()
+    {
+        $user = new User();
+
+        $this->assertNull($user->getPlainPassword());
+
+        $user->setPlainPassword("password");
+        $this->assertSame("password", $user->getPlainPassword());
+    }
 }
