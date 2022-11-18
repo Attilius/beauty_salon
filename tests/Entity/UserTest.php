@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
-    public function testSettingEmail()
+    public function test_setting_email()
     {
         $user = new User();
 
@@ -17,7 +17,17 @@ class UserTest extends TestCase
         $this->assertSame("example@test.com", $user->getEmail());
     }
 
-    public function testSettingRoles()
+    public function test_setting_roles()
+    {
+        $user = new User();
+
+        $this->assertSame(["ROLE_USER"], $user->getRoles());
+
+        $user->setRoles(["ROLE_ADMIN"]);
+        $this->assertSame(["ROLE_ADMIN", "ROLE_USER"], $user->getRoles());
+    }
+
+    public function test_getting_role_return_array_with_unique_items()
     {
         $user = new User();
 
