@@ -16,4 +16,14 @@ class EmployeeTest extends TestCase
         $employee->setJobTitle("tester");
         $this->assertSame("tester", $employee->getJobTitle());
     }
+
+    public function test_setting_job_location()
+    {
+        $employee = new Employee();
+
+        $this->assertNull($employee->getJobLocation());
+
+        $employee->setJobLocation("Anywhere city");
+        $this->assertSame("Anywhere city", $employee->getJobLocation());
+    }
 }
