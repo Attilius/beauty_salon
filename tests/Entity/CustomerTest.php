@@ -46,4 +46,14 @@ class CustomerTest extends TestCase
         $customer->setCity("Nowhere City");
         $this->assertSame("Nowhere City", $customer->getCity());
     }
+
+    public function test_setting_state()
+    {
+        $customer = new Customer();
+
+        $this->assertNull($customer->getState());
+
+        $customer->setState("Stellar state");
+        $this->assertSame("Stellar state", $customer->getState());
+    }
 }
