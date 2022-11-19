@@ -56,4 +56,14 @@ class CustomerTest extends TestCase
         $customer->setState("Stellar state");
         $this->assertSame("Stellar state", $customer->getState());
     }
+
+    public function test_setting_postal_code()
+    {
+        $customer = new Customer();
+
+        $this->assertNull($customer->getPostalCode());
+
+        $customer->setPostalCode("12345");
+        $this->assertSame("12345", $customer->getPostalCode());
+    }
 }
