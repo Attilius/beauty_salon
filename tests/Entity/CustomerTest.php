@@ -66,4 +66,14 @@ class CustomerTest extends TestCase
         $customer->setPostalCode("12345");
         $this->assertSame("12345", $customer->getPostalCode());
     }
+
+    public function test_setting_country()
+    {
+        $customer = new Customer();
+
+        $this->assertNull($customer->getCountry());
+
+        $customer->setCountry("Abracadabra");
+        $this->assertSame("Abracadabra", $customer->getCountry());
+    }
 }
