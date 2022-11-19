@@ -26,4 +26,14 @@ class CustomerTest extends TestCase
         $customer->setAddress1("Anywhere street 11");
         $this->assertSame("Anywhere street 11", $customer->getAddress1());
     }
+
+    public function test_setting_address2()
+    {
+        $customer = new Customer();
+
+        $this->assertNull($customer->getAddress2());
+
+        $customer->setAddress2("Somewhere avenue 11");
+        $this->assertSame("Somewhere avenue 11", $customer->getAddress2());
+    }
 }
