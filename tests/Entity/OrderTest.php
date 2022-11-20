@@ -16,4 +16,14 @@ class OrderTest extends TestCase
         $order->setIdentifyNumber("ORD-2022/007");
         $this->assertSame("ORD-2022/007", $order->getIdentifyNumber());
     }
+
+    public function test_setting_customer_id()
+    {
+        $order = new Order();
+
+        $this->assertNull($order->getCustomerId());
+
+        $order->setCustomerId(5);
+        $this->assertSame(5, $order->getCustomerId());
+    }
 }
