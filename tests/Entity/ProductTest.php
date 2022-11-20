@@ -56,4 +56,14 @@ class ProductTest extends TestCase
         $product->setPrice(100);
         $this->assertSame(100, $product->getPrice());
     }
+
+    public function test_setting_number_of_stock()
+    {
+        $product = new Product();
+
+        $this->assertNull($product->getNumberOfStock());
+
+        $product->setNumberOfStock(1000);
+        $this->assertSame(1000, $product->getNumberOfStock());
+    }
 }
