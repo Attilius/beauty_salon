@@ -26,4 +26,14 @@ class ProductTest extends TestCase
         $product->setType("Beauty tool");
         $this->assertSame("Beauty tool", $product->getType());
     }
+
+    public function test_setting_description()
+    {
+        $product = new Product();
+
+        $this->assertNull($product->getDescription());
+
+        $product->setDescription("Lorem ipsum dolor sit amet...");
+        $this->assertSame("Lorem ipsum dolor sit amet...", $product->getDescription());
+    }
 }
