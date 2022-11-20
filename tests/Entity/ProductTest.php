@@ -66,4 +66,14 @@ class ProductTest extends TestCase
         $product->setNumberOfStock(1000);
         $this->assertSame(1000, $product->getNumberOfStock());
     }
+
+    public function test_setting_is_public()
+    {
+        $product = new Product();
+
+        $this->assertNull($product->getIsPublic());
+
+        $product->setIsPublic(true);
+        $this->assertTrue($product->getIsPublic());
+    }
 }
