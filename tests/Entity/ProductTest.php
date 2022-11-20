@@ -16,4 +16,14 @@ class ProductTest extends TestCase
         $product->setName("Beauty product");
         $this->assertSame("Beauty product", $product->getName());
     }
+
+    public function test_setting_type()
+    {
+        $product = new Product();
+
+        $this->assertNull($product->getType());
+
+        $product->setType("Beauty tool");
+        $this->assertSame("Beauty tool", $product->getType());
+    }
 }
