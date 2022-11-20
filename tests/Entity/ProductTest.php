@@ -46,4 +46,14 @@ class ProductTest extends TestCase
         $product->setImage("https://beauty-tools/tool_01.png");
         $this->assertSame("https://beauty-tools/tool_01.png", $product->getImage());
     }
+
+    public function test_setting_price()
+    {
+        $product = new Product();
+
+        $this->assertNull($product->getPrice());
+
+        $product->setPrice(100);
+        $this->assertSame(100, $product->getPrice());
+    }
 }
