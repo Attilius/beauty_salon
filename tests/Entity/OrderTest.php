@@ -36,4 +36,14 @@ class OrderTest extends TestCase
         $order->setStatus(222);
         $this->assertSame(222, $order->getStatus());
     }
+
+    public function test_setting_comment()
+    {
+        $order = new Order();
+
+        $this->assertNull($order->getComment());
+
+        $order->setComment("Lorem ipsum dolor sit amet.");
+        $this->assertSame("Lorem ipsum dolor sit amet.", $order->getComment());
+    }
 }
