@@ -26,4 +26,14 @@ class OrderTest extends TestCase
         $order->setCustomerId(5);
         $this->assertSame(5, $order->getCustomerId());
     }
+
+    public function test_setting_status()
+    {
+        $order = new Order();
+
+        $this->assertNull($order->getStatus());
+
+        $order->setStatus(222);
+        $this->assertSame(222, $order->getStatus());
+    }
 }
