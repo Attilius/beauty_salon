@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Customer;
 use App\Repository\CustomerRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -29,9 +30,12 @@ use Zenstruck\Foundry\Proxy;
  */
 final class CustomerFactory extends ModelFactory
 {
-    public function __construct()
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
+        $this->passwordHasher = $passwordHasher;
     }
 
     protected function getDefaults(): array
@@ -41,7 +45,7 @@ final class CustomerFactory extends ModelFactory
             'roles' => [],
             'firstName' => self::faker()->firstName(),
             'lastName' => self::faker()->lastName(),
-            'password' => self::faker()->text(),
+            'plainPassword' => 'password',
             'phone' => self::faker()->phoneNumber(),
             'address1' => self::faker()->address(),
             'city' => self::faker()->city(),
@@ -55,8 +59,14 @@ final class CustomerFactory extends ModelFactory
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-            // ->afterInstantiate(function(Customer $customer): void {})
-        ;
+            ->afterInstantiate(function(Customer $user): void {
+                if ($user->getPlainPassword()) {
+                    $user->setPassword(
+                        $this->passwordHasher->hashPassword($user,$user->getPlainPassword())
+                    );
+                }
+            })
+            ;
     }
 
     protected static function getClass(): string
