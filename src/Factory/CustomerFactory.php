@@ -43,7 +43,7 @@ final class CustomerFactory extends ModelFactory
             'lastName' => self::faker()->lastName(),
             'password' => self::faker()->text(),
             'phone' => self::faker()->phoneNumber(),
-            'address1' => self::faker()->text(),
+            'address1' => self::faker()->address(),
             'city' => self::faker()->text(),
             'state' => self::faker()->text(),
             'postalCode' => self::faker()->text(),
