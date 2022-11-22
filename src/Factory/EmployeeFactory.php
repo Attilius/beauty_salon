@@ -37,7 +37,7 @@ final class EmployeeFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'email' => self::faker()->text(),
+            'email' => self::faker()->email(),
             'roles' => [],
             'firstName' => self::faker()->text(),
             'lastName' => self::faker()->text(),
