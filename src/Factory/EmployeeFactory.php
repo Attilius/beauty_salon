@@ -43,7 +43,7 @@ final class EmployeeFactory extends ModelFactory
             'lastName' => self::faker()->lastName(),
             'password' => self::faker()->text(),
             'jobTitle' => self::faker()->jobTitle(),
-            'jobLocation' => self::faker()->text(),
+            'jobLocation' => self::faker()->locale(),
         ];
     }
 
