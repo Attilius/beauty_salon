@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\Entity\Customer;
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -51,8 +52,14 @@ final class EmployeeFactory extends ModelFactory
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-            // ->afterInstantiate(function(Employee $employee): void {})
-        ;
+            ->afterInstantiate(function(Customer $user): void {
+                if ($user->getPlainPassword()) {
+                    $user->setPassword(
+                        $this->passwordHasher->hashPassword($user,$user->getPlainPassword())
+                    );
+                }
+            })
+            ;
     }
 
     protected static function getClass(): string
