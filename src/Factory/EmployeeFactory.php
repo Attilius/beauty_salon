@@ -39,7 +39,7 @@ final class EmployeeFactory extends ModelFactory
         return [
             'email' => self::faker()->email(),
             'roles' => [],
-            'firstName' => self::faker()->text(),
+            'firstName' => self::faker()->firstName(),
             'lastName' => self::faker()->text(),
             'password' => self::faker()->text(),
             'jobTitle' => self::faker()->text(),
