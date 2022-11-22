@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\CustomerFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Factory\UserFactory;
@@ -18,6 +19,8 @@ class AppFixtures extends Fixture
             'plainPassword' => 'admin',
         ]);
         UserFactory::createMany(4);
+
+        CustomerFactory::createMany(12);
 
         $manager->flush();
     }
