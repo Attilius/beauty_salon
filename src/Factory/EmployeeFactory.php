@@ -5,6 +5,7 @@ namespace App\Factory;
 use App\Entity\Customer;
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -30,9 +31,12 @@ use Zenstruck\Foundry\Proxy;
  */
 final class EmployeeFactory extends ModelFactory
 {
-    public function __construct()
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
+        $this->passwordHasher = $passwordHasher;
     }
 
     protected function getDefaults(): array
