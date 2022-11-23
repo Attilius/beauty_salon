@@ -1,0 +1,8 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+    {% if product %}
+<h1>It's {{ product.type }} works...</h1>
+        <img height="200px" width="200px" src="{{ product.image }}" alt="{{ product.name }}">
+    {% endif %}
+{% endblock %}
