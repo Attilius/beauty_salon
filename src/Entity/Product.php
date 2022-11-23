@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -17,7 +18,7 @@ class Product
     #[ORM\Column(length: 32)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 32, nullable: true)]
+    #[ORM\Column(length: 32)]
     private ?string $type = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -37,6 +38,10 @@ class Product
 
     #[ORM\Column]
     private ?bool $inStock = null;
+
+    #[Gedmo\Slug(fields: ['name'])]
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $slug = null;
 
     /**
      * @return int|null
@@ -172,5 +177,21 @@ class Product
     public function setInStock(?bool $inStock): void
     {
         $this->inStock = $inStock;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string|null $slug
+     */
+    public function setSlug(?string $slug): void
+    {
+        $this->slug = $slug;
     }
 }
