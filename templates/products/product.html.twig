@@ -2,7 +2,9 @@
 
 {% block body %}
     {% if product %}
-<h1>It's {{ product.type }} works...</h1>
-        <img height="200px" width="200px" src="{{ product.image }}" alt="{{ product.name }}">
+        {% for item in product %}
+<h1>It's {{ item.type }} works...</h1>
+        <img height="200px" width="200px" src="{{ item.image }}" alt="{{ item.name }}">
+        {% endfor %}
     {% endif %}
 {% endblock %}
