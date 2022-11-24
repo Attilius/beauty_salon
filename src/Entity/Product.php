@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Cocur\Slugify\Slugify;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -38,10 +38,6 @@ class Product
 
     #[ORM\Column]
     private ?bool $inStock = null;
-
-    #[Gedmo\Slug(fields: ['name'])]
-    #[ORM\Column(type: 'string', length: 255)]
-    private ?string $slug = null;
 
     /**
      * @return int|null
@@ -180,18 +176,10 @@ class Product
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
-        return $this->slug;
-    }
-
-    /**
-     * @param string|null $slug
-     */
-    public function setSlug(?string $slug): void
-    {
-        $this->slug = $slug;
+        return (new Slugify())->slugify($this->name);
     }
 }
