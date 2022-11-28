@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+  {#  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
         {% for item in product_groups %}
         <div data-index="{{item.id}}" class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
             <a data-index="{{item.id}}" class="product-card" href="/products/{{ item.type }}">
@@ -27,8 +27,26 @@
             </a>
         </div>
         {% endfor %}
+    </div> #}
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 row row-cols-1 row-cols-md-2 g-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4 my-md-3 mx-md-3 ps-md-3">
+            {% for item in product_groups %}
+            <div data-index="{{item.id}}" class="bg-light text-center py-3 px-3 overflow-hidden">
+                <a data-index="{{item.id}}" class="product-card" href="/products/{{ item.type }}">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 id="title" class="display-5">{{ item.title }}</h2>
+                                <p class="lead">{{ item.subTitle }}</p>
+                            </div>
+                            <div class="shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; background-image: url('{{ item.image }}'); background-repeat: no-repeat; background-size: cover; background-position: center"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-
 </main>
 
 <script>
@@ -58,10 +76,9 @@
     function setCardStyleColor(tags, cardItem){
         for (const tagItem of tags) {
             if (tagItem.classList.contains('product-card') &&
-                cardItem.style.backgroundColor === 'hotpink' &&
                 cardItem.attributes['data-index'].value === tagItem.attributes['data-index'].value)
             {
-                tagItem.style.color = 'whitesmoke';
+                tagItem.style.color = 'hotpink';
             }
         }
     }
