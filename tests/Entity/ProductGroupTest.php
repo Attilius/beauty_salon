@@ -36,4 +36,14 @@ class ProductGroupTest extends TestCase
         $productGroup->setSubTitle("Lorem ipsum dolor sit amet...");
         $this->assertSame("Lorem ipsum dolor sit amet...", $productGroup->getSubTitle());
     }
+
+    public function test_setting_image()
+    {
+        $productGroup = new ProductGroup();
+
+        $this->assertNull($productGroup->getImage());
+
+        $productGroup->setImage("https://www.pictures.com/products.png");
+        $this->assertSame("https://www.pictures.com/products.png", $productGroup->getImage());
+    }
 }
