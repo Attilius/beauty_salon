@@ -16,4 +16,14 @@ class ArticleTest extends TestCase
         $article->setTitle("Article title");
         $this->assertSame("Article title", $article->getTitle());
     }
+
+    public function test_setting_subtitle()
+    {
+        $article = new Article();
+
+        $this->assertNull($article->getSubTitle());
+
+        $article->setSubTitle("Article subtitle");
+        $this->assertSame("Article subtitle", $article->getSubTitle());
+    }
 }
