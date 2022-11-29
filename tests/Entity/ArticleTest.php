@@ -46,4 +46,14 @@ class ArticleTest extends TestCase
         $article->setAuthor("John Doe");
         $this->assertSame("John Doe", $article->getAuthor());
     }
+
+    public function test_setting_thumbnail()
+    {
+        $article = new Article();
+
+        $this->assertNull($article->getThumbnail());
+
+        $article->setThumbnail("https://www.pictures.com/thumbnail.png");
+        $this->assertSame("https://www.pictures.com/thumbnail.png", $article->getThumbnail());
+    }
 }
