@@ -36,4 +36,14 @@ class ArticleTest extends TestCase
         $article->setContent("Lorem ipsum dolor sit amet...");
         $this->assertSame("Lorem ipsum dolor sit amet...", $article->getContent());
     }
+
+    public function test_setting_author()
+    {
+        $article = new Article();
+
+        $this->assertNull($article->getAuthor());
+
+        $article->setAuthor("John Doe");
+        $this->assertSame("John Doe", $article->getAuthor());
+    }
 }
