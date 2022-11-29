@@ -13,7 +13,7 @@ class ProductGroupTest extends TestCase
 
         $this->assertNull($productGroup->getType());
 
-        $productGroup->setType("Beauty products");
-        $this->assertSame("Beauty products", $productGroup->getType());
+        $productGroup->setType("beauty products");
+        $this->assertSame("beauty products", $productGroup->getType());
     }
 }
