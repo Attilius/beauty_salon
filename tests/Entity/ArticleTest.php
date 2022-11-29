@@ -56,4 +56,14 @@ class ArticleTest extends TestCase
         $article->setThumbnail("https://www.pictures.com/thumbnail.png");
         $this->assertSame("https://www.pictures.com/thumbnail.png", $article->getThumbnail());
     }
+
+    public function test_setting_cover_image()
+    {
+        $article = new Article();
+
+        $this->assertNull($article->getCoverImage());
+
+        $article->setCoverImage("https://www.pictures.com/cover-image.png");
+        $this->assertSame("https://www.pictures.com/cover-image.png", $article->getCoverImage());
+    }
 }
