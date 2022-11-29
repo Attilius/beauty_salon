@@ -26,4 +26,14 @@ class ArticleTest extends TestCase
         $article->setSubTitle("Article subtitle");
         $this->assertSame("Article subtitle", $article->getSubTitle());
     }
+
+    public function test_setting_content()
+    {
+        $article = new Article();
+
+        $this->assertNull($article->getContent());
+
+        $article->setContent("Lorem ipsum dolor sit amet...");
+        $this->assertSame("Lorem ipsum dolor sit amet...", $article->getContent());
+    }
 }
