@@ -16,4 +16,14 @@ class ProductGroupTest extends TestCase
         $productGroup->setType("beauty products");
         $this->assertSame("beauty products", $productGroup->getType());
     }
+
+    public function test_setting_title()
+    {
+        $productGroup = new ProductGroup();
+
+        $this->assertNull($productGroup->getTitle());
+
+        $productGroup->setTitle("Beauty products");
+        $this->assertSame("Beauty products", $productGroup->getTitle());
+    }
 }
