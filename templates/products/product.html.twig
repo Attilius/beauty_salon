@@ -2,9 +2,23 @@
 
 {% block body %}
     {% if product %}
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for item in product %}
-<h1>It's {{ item.type }} works...</h1>
-        <img height="200px" width="200px" src="{{ item.image }}" alt="{{ item.name }}">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{item.image}}" class="card-img-top img-fluid img-thumbnail" alt="{{item.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.description}}</p>
+                        </div>
+                        <button class="card-footer btn btn-outline-pink">
+                            <small class="text-muted text-pink">Add to cart</small>
+                        </button>
+                    </div>
+                </div>
         {% endfor %}
+            </div>
+
     {% endif %}
 {% endblock %}
